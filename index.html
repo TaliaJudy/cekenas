@@ -24,11 +24,17 @@
   </header>
 
   <main class="wrap">
+    <h2 style="font-size:1.4rem;font-weight:600;margin-bottom:1rem">Welcome to CEKENA Results Portal</h2>
+    <p style="margin-top:-8px;margin-bottom:20px;font-size:1rem;color:#334155">Greetings and welcome to the official CEKENA academic performance page. Kindly use the search bar below to find results. — <strong>Cytra</strong></p>
+    <div class="card" id="searchCard">
+      <input id="searchInput" type="text" placeholder="Search by Name or Index Number" style="width:100%;padding:10px;border-radius:8px;border:1px solid #cbd5e1;margin-bottom:14px" />
+      <div id="searchOutput" style="margin-bottom:22px;font-size:0.95rem;color:#475569"></div>
+    </div>
     <div class="card">
       <div class="controls">
         <!-- PDF link: make sure the PDF file is in the same folder as this HTML -->
         <a class="button" href="CEKENA%20ENDYEAR%20FORM%203%20INDIVIDUAL%20PERFORMANCE.pdf" target="_blank" rel="noopener">Open PDF in new tab</a>
-        <a class="button" href="CEKENA%20ENDYEAR%20FORM%203%20INDIVIDUAL%20PERFORMANCE.pdf" download>Download PDF</a>
+        
         <span class="note">Tip: Put <strong>this HTML</strong> and the PDF in the same folder on your web server.</span>
       </div>
 
@@ -40,5 +46,38 @@
       <p style="margin-top:12px" class="note">If the PDF doesn't display, your browser may block embedded PDFs or not support them. Use the "Open PDF in new tab" link above. To avoid problems with spaces in filenames, you can rename the PDF to <code>results.pdf</code> and update the link in this HTML accordingly.</p>
     </div>
   </main>
+  <script>
+    // Simple mock data
+    const mockData = [
+      { name: "John Doe", index: "CEK123", grade: "A", score: 89 },
+      { name: "Mary Jane", index: "CEK456", grade: "B", score: 78 },
+      { name: "Alex Kim", index: "CEK789", grade: "A", score: 92 }
+    ];
+
+    const input = document.getElementById("searchInput");
+    const output = document.getElementById("searchOutput");
+
+    input.addEventListener("input", () => {
+      const q = input.value.toLowerCase().trim();
+      if (!q) {
+        output.innerHTML = "";
+        return;
+      }
+      const results = mockData.filter(x => x.name.toLowerCase().includes(q) || x.index.toLowerCase().includes(q));
+      if (!results.length) {
+        output.innerHTML = `<div>No results found.</div>`;
+      } else {
+        output.innerHTML = results.map(r => `
+          <div style="padding:10px;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:8px">
+            <strong>${r.name}</strong><br/>
+            Index: ${r.index}<br/>
+            Score: ${r.score}<br/>
+            Grade: ${r.grade}
+          </div>`
+        ).join("");
+      }
+    });
+  </script>
 </body>
 </html>
+,
