@@ -1,3 +1,44 @@
-<html>
-i want to access cekena 
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CEKENA — Results Viewer</title>
+  <style>
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial;margin:0;background:#f6f8fb;color:#111}
+    header{background:#1e293b;color:#fff;padding:1rem 1.25rem}
+    .wrap{max-width:980px;margin:28px auto;padding:0 16px}
+    .card{background:#fff;border-radius:12px;box-shadow:0 6px 18px rgba(15,23,42,0.08);padding:18px}
+    .controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+    a.button{display:inline-block;padding:10px 14px;border-radius:9px;text-decoration:none;background:#0ea5e9;color:#04263b}
+    .viewer{height:78vh;border:1px solid #e6eef6;border-radius:8px;overflow:hidden}
+    .note{font-size:0.9rem;color:#334155}
+    @media(max-width:700px){.viewer{height:60vh}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1 style="margin:0;font-size:1.1rem">CEKENA Results — Viewer</h1>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="card">
+      <div class="controls">
+        <!-- PDF link: make sure the PDF file is in the same folder as this HTML -->
+        <a class="button" href="CEKENA%20ENDYEAR%20FORM%203%20INDIVIDUAL%20PERFORMANCE.pdf" target="_blank" rel="noopener">Open PDF in new tab</a>
+        <a class="button" href="CEKENA%20ENDYEAR%20FORM%203%20INDIVIDUAL%20PERFORMANCE.pdf" download>Download PDF</a>
+        <span class="note">Tip: Put <strong>this HTML</strong> and the PDF in the same folder on your web server.</span>
+      </div>
+
+      <!-- Embedded PDF viewer (works in most modern browsers) -->
+      <div class="viewer">
+        <iframe src="CEKENA%20ENDYEAR%20FORM%203%20INDIVIDUAL%20PERFORMANCE.pdf" title="Results PDF" style="width:100%;height:100%;border:0"></iframe>
+      </div>
+
+      <p style="margin-top:12px" class="note">If the PDF doesn't display, your browser may block embedded PDFs or not support them. Use the "Open PDF in new tab" link above. To avoid problems with spaces in filenames, you can rename the PDF to <code>results.pdf</code> and update the link in this HTML accordingly.</p>
+    </div>
+  </main>
+</body>
 </html>
